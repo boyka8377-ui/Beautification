@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-bengali: "Hind Siliguri", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-brand-black: #111111;
+  --color-brand-charcoal: #1A1A1A;
+  --color-brand-sand: #F7F6F3;
+  --color-brand-border: #E5E4DE;
+  --color-brand-accent: #C59A6F;
+  --color-brand-gold: #D4AF37;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.headline-tight {
+  letter-spacing: -0.04em;
+}
+
+.blueprint-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
+.light-wireframe-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.hero-stage-card {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+.hero-stage-card.is-active {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  filter: blur(0px);
+  z-index: 20;
+}
+.hero-stage-card.is-prev {
+  transform: scale(0.88) translateY(6px);
+  opacity: 0.38;
+  filter: blur(1.5px);
+  z-index: 10;
+  pointer-events: auto;
+}
+.hero-stage-card.is-next {
+  transform: scale(0.88) translateY(6px);
+  opacity: 0.38;
+  filter: blur(1.5px);
+  z-index: 10;
+  pointer-events: auto;
+}
+.hero-stage-card.is-hidden {
+  display: none;
+}
+
+/* 3D Floating Stage Custom Animations & Perspective */
+.gallery-3d-stage {
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.gallery-card-3d {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+@keyframes subtleFloat1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.4deg); }
+}
+@keyframes subtleFloat2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(7px) rotate(-0.5deg); }
+}
+.animate-float-1 {
+  animation: subtleFloat1 6.5s ease-in-out infinite;
+}
+.animate-float-2 {
+  animation: subtleFloat2 7.5s ease-in-out infinite 0.8s;
+}
+.stage-anim-paused * {
+  animation-play-state: paused !important;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 36s linear infinite;
+}
+.marquee-track:hover, .marquee-track.is-paused {
+  animation-play-state: paused;
+}
