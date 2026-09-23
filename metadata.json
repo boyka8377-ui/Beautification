@@ -1,0 +1,6 @@
+{
+  "name": "Beautification — The Beauty Studio",
+  "description": "Bespoke bridal, hair artistry, and couture glamour transformations at Beautification The Beauty Studio in Mohammadpur, Dhaka.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
